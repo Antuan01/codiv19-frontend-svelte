@@ -1,13 +1,19 @@
 import { isYesterdayDate, isDateEqual } from './date'
-export const totalByCasesInDate = (dataByCase) => dataByCase.reduce(maxCases, 0)
+export const countryInfoWithTotalCases = (dataByCase) => dataByCase.reduce(maxCases, { Cases: 0 })
 
 const maxCases = (acc, dayData) => {
-    if (!dayData && dayData.Date) return acc;
+    // if (!dayData && dayData.Date) return acc;
     if (isYesterdayDate(dayData.Date)) {
-        return acc + dayData.Cases
+        return {
+            ...dayData,
+            Cases: acc.Cases + dayData.Cases
+        }
     }
     if (isDateEqual(dayData.Date, "2020-09-01T00:00:00Z")) {
-        return acc - dayData.Cases
+        return {
+            ...acc,
+            Cases: acc.Cases - dayData.Cases
+        }
     }
     return acc
 }

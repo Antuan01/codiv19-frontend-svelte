@@ -2,14 +2,14 @@
     import { countries, countriesSelectedRandomly } from './store/stores';    
     import axios from "axios";
     import { onMount } from 'svelte';
+	import Card from './Card.svelte';
 
 
     function getCountries(){  
     	axios.get(`countries`)
         	.then(res => {
-				console.log(res, $countries)
 				countries.set(res.data)
-				console.log($countries, $countriesSelectedRandomly, "countries")
+				console.log($countriesSelectedRandomly, "countries")
 			})
         	.catch(err => console.log(err));
     }
@@ -23,5 +23,10 @@
 <style>
 
 </style>
+<div class="flex flex-wrap justify-between">
+{#each $countriesSelectedRandomly as countryInfo}
+		<Card countryInfo={countryInfo} />
+	{/each}
+</div>
 
 
