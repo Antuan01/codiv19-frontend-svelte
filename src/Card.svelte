@@ -1,18 +1,18 @@
 <script>
 
-    onMount(async () => {
+  //   onMount(async () => {
 		
-	});
+	// });
 
-    onDestroy(() => );
+  //   onDestroy(() => );
 
-    beforeUpdate(() => {
+  //   beforeUpdate(() => {
 
-    });
+  //   });
 
-    afterUpdate(() => {
+  //   afterUpdate(() => {
         
-    });
+  //   });
 
 </script>
 
