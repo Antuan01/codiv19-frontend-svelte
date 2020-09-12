@@ -2,14 +2,22 @@
 
   import axios from "axios";
   import { onMount } from 'svelte';
+  import {currentMonth, currentDay} from './utils/date';
+  import {totalByCasesInDate} from './utils/handleData'
 
-function getData() {
-      let data = axios.get('https://api.covid19api.com/country/spain?from=2020-09-01T00:00:00Z&to=2020-09-02T00:00:00Z')
-          .then(res => console.log(res.data))
-          .catch(err => console.log(err));
-}
+  function getData() {
+     axios.get(`country/spain/status/confirmed?from=2020-09-01T00:00:00Z&to=2020-${currentMonth()}-${currentDay()}T00:00:00Z`)
+    // let data = axios.get(`country/spain/status/confirmed/live?from=2020-09-01T00:00:00Z&to=2020-${currentMonth()}-${currentDay()}T00:00:00Z`)
+      .then(res => {
+            console.log(res.data)
+            console.log(totalByCasesInDate(res.data))
+          })
+      .catch(err => console.log(err));
+  }
 
-onMount(() => getData());
+  onMount(() => {
+    getData()
+  });
 
 </script>
 
@@ -26,8 +34,14 @@ onMount(() => getData());
   </p>
 </div>
 <div class="px-6 pt-4 pb-2">
-  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+  #photography
+  </span>
+  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+    #travel
+  </span>
+  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+    #winter
+  </span>
 </div>
 </div>

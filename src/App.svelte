@@ -1,11 +1,15 @@
 <script>
 	import Card from "./Card.svelte";
 	export let name;
+	import axios from 'axios'
+	import CardsContainer from "./CardsContainer.svelte";
+	axios.defaults.baseURL = 'https://api.covid19api.com/';
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
-	<Card/>
+	<Card/>	
+	<CardsContainer />
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 </main>
 
