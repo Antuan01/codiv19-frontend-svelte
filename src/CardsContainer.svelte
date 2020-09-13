@@ -23,7 +23,7 @@
 <style>
 
 </style>
-<div class="flex flex-wrap justify-between">
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-9/10">
 {#each $countriesSelectedRandomly as countryInfo}
 		<Card countryInfo={countryInfo} />
 	{/each}

@@ -31,7 +31,7 @@
   });
 
   $:{
-    console.log(countryInfo.Slug, $contriesInfo[countryInfo.Slug])
+    console.log(countryInfo.Slug, $contriesInfo[countryInfo.Slug], open)
   }
 
 
@@ -46,26 +46,17 @@
  }
 </style>
 
-<div class="max-w-sm rounded overflow-hidden shadow-lg background-color-card cursor-pointer hover:bg-blue-600"
+<div class="lg:max-w-400 rounded overflow-hidden shadow-lg background-color-card cursor-pointer mb-8 mr-4 hover:bg-blue-600"
 on:click={showForm}
 >
-<!-- <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"> -->
-<div class="px-6 py-4">
-  <div class="font-bold text-xl mb-2 color-name-of-country">{countryInfo.Country}</div>
-  <p class="text-white text-base">
+<div class="px-6 py-4 text-center">
+  <div class="font-bold text-xl p-6 color-name-of-country">
+    <p class="truncate">{countryInfo.Country}</p>
+</div>
+  <p class="text-4xl pb-6">
     {$contriesInfo[countryInfo.Slug] && $contriesInfo[countryInfo.Slug].Cases }
   </p>
  
 </div>
-<div class="px-6 pt-4 pb-2">
-  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-  #photography
-  </span>
-  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-    #travel
-  </span>
-  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-    #winter
-  </span>
-</div>
+
 </div>
