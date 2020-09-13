@@ -8,8 +8,8 @@ export const countries = writable([]);
 export const countriesSelectedRandomly = derived(
     countries,
     $countries => {
-        const rand = getRandomInt($countries.length - 5)
-        return $countries.slice(rand, rand + 4)
+        const rand = getRandomInt($countries.length - 9)
+        return $countries.slice(rand, rand + 8)
     }
 );
 //handle single countries
