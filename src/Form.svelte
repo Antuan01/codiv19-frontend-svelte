@@ -1,43 +1,42 @@
 <script>
     import Button from "./Button.svelte";
-    import {contriesInfo} from "./store/stores";
-    export let slug;
+    export let countryName;
 </script>
 
-<div class="w-full max-w-xs">
-    <p class="px-8 text-2xl">{$contriesInfo[slug] && $contriesInfo[slug].Country}</p>
-    <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
+<div class="w-full">
+    <p class="px-8 text-2xl">{countryName}</p>
+    <form class="px-8 pt-6 pb-8 mb-4">
         <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="confirmed"> Confirmed </label>
+            <label class="block text-sm font-bold mb-2" for="confirmed"> Confirmed </label>
             <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                class="text-black shadow appearance-none border rounded w-full py-2 px-3 leading-tight
                     focus:outline-none focus:shadow-outline"
                 id="confirmed"
                 type="number"
                 placeholder="" />
         </div>
         <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="deaths"> Deaths </label>
+            <label class="block text-sm font-bold mb-2" for="deaths"> Deaths </label>
             <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3
+                class="text-black shadow appearance-none border rounded w-full py-2 px-3 mb-3
                     leading-tight focus:outline-none focus:shadow-outline"
                 id="deaths"
                 type="number"
                 placeholder="" />
         </div>
         <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="recovered"> Recovered </label>
+            <label class="block text-sm font-bold mb-2" for="recovered"> Recovered </label>
             <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                class="text-black shadow appearance-none border rounded w-full py-2 px-3 leading-tight
                     focus:outline-none focus:shadow-outline"
                 id="recovered"
                 type="number"
                 placeholder="" />
         </div>
         <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="actives"> Actives </label>
+            <label class="block text-sm font-bold mb-2" for="actives"> Actives </label>
             <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3
+                class="text-black shadow appearance-none border rounded w-full py-2 px-3 mb-3
                     leading-tight focus:outline-none focus:shadow-outline"
                 id="actives"
                 type="number"

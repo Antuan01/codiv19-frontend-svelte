@@ -16,7 +16,7 @@
 
     const showForm = () => {
         console.log(countryInfo);
-        open(Form, {slug: countryInfo.Slug});
+        open(Form, {countryName: countryInfo.Country, contentClass: "md:max-w-630 w-full"});
     };
 
     const handleRetry = () => (getCountryInfo = getData());
