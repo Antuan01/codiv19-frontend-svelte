@@ -24,7 +24,7 @@
     styleBg,
     styleWindow,
     styleContent,
-	styleCloseButton,
+	  styleCloseButton,
     transitionBg,
     transitionBgProps,
     transitionWindow,
