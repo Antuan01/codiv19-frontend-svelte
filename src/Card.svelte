@@ -4,7 +4,7 @@
     import {currentMonth, currentDay} from "./utils/date";
     import {contriesInfo, countries} from "./store/stores";
     import {getContext} from "svelte";
-    import Form3 from "./Form3.svelte";
+    import Form from "./Form.svelte";
     import Loader from "./Loader.svelte";
     import Button from "./Button.svelte";
     export let countryInfo;
@@ -15,7 +15,7 @@
     const {open} = getContext("simple-modal");
 
     const showForm = () => {
-        open(Form3, {
+        open(Form, {
             countryName: $contriesInfo[countryInfo.Slug].Country || countryInfo.Slug,
             city: $contriesInfo[countryInfo.Slug].City || "N/A",
             code: $contriesInfo[countryInfo.Slug].CountryCode || "N/A",

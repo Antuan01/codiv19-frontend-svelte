@@ -1,6 +1,5 @@
 <script>
     import CardsContainer from "./CardsContainer.svelte";
-    import Form2 from "./Form2.svelte";
     import axios from "axios";
 
     axios.defaults.baseURL = "https://api.covid19api.com/";
@@ -12,5 +11,4 @@
         <p>from September 1, 2020 until today</p>
     </div>
     <CardsContainer />
-    <!-- <Form2/> -->
 </main>
