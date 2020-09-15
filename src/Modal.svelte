@@ -49,10 +49,11 @@
     //lifecicles
 
     beforeUpdate(() => {
-        setCenteredModal();
-        document.body.classList.add("modal-opened");
+        if (props && props.opened) {
+            setCenteredModal();
+            document.body.classList.add("modal-opened");
+        }
     });
-    // onDestroy(() => )
 
     const setCenteredModal = (type = null) => {
         if (modalWindow && isContentBiggerThanWindow(modalWindow)) {
@@ -74,7 +75,10 @@
     const camelCaseToDash = str => str.replace(/([a-zA-Z])(?=[A-Z])/g, "$1-").toLowerCase();
 
     const toCssString = props =>
-        Object.keys(props).reduce((str, key) => `${str}; ${camelCaseToDash(key)}: ${props[key]}`, "");
+        Object.keys(props).reduce(
+            (str, key) => `${str}; ${camelCaseToDash(key)}: ${props[key]}`,
+            ""
+        );
 
     const isSvelteComponent = component => SvelteComponent.isPrototypeOf(component);
 
@@ -95,7 +99,7 @@
     const open = (NewComponent, newProps = {}, options = {}, callback = {}) => {
         console.log(newProps);
         Component = NewComponent;
-        props = newProps;
+        props = {...newProps, opened: true};
         state = {...defaultState, ...options};
         onOpen = callback.onOpen || toVoid;
         onClose = callback.onClose || toVoid;
@@ -104,7 +108,7 @@
     };
 
     const close = (callback = {}) => {
-        console.log("closing");
+        document.body.classList.remove("modal-opened");
         onClose = callback.onClose || onClose;
         onClosed = callback.onClosed || onClosed;
         Component = null;
