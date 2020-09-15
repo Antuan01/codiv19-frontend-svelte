@@ -2,7 +2,7 @@
     import axios from "axios";
     import {onMount, beforeUpdate} from "svelte";
     import {currentMonth, currentDay} from "./utils/date";
-    import {contriesInfo} from "./store/stores";
+    import {contriesInfo, countries} from "./store/stores";
     import {getContext} from "svelte";
     import Form3 from "./Form3.svelte";
     import Loader from "./Loader.svelte";
@@ -15,16 +15,18 @@
     const {open} = getContext("simple-modal");
 
     const showForm = () => {
-        // console.log(countryInfo);
+        console.log(contriesInfo);
+        console.log(countryInfo);
+
         open(Form3, {
-            countryName: countryInfo.Country || "",
-            city: countryInfo.City || "",
-            code: countryInfo.CountryCode || "",
-            province: countryInfo.province || "",
-            lat: countryInfo.Lat || "",
-            lon:countryInfo.Lon || "",
-            cases: countryInfo.Cases || "",
-            status: countryInfo.Status || "",
+            countryName: contriesInfo.Country || "",
+            city: contriesInfo.City || "",
+            code: contriesInfo.CountryCode || "",
+            province: contriesInfo.province || "",
+            lat: contriesInfo.Lat || "",
+            lon:contriesInfo.Lon || "",
+            cases: contriesInfo.Cases || "",
+            status: contriesInfo.Status || "",
             contentClass: "md:max-w-630 w-full"
         });
     };
@@ -32,11 +34,13 @@
     const handleRetry = () => (getCountryInfo = getData());
 
     const setTopBarColor = index => `color-line-${index}`;
+
     const shouldStopLoading = () => {
         if (isLoading && $contriesInfo && $contriesInfo[countryInfo.Slug]) {
             isLoading = false;
         }
     };
+
     async function getData() {
         if (!isLoading) isLoading = true;
         const response = await axios.get(
@@ -45,7 +49,7 @@
             }/status/confirmed?from=2020-09-01T00:00:00Z&to=2020-${currentMonth()}-${currentDay()}T00:00:00Z`
         );
         if (response && response.data) {
-            console.log(response.data)
+            // console.log(response.data)
             contriesInfo.setCountry(countryInfo.Slug, response.data);
             return response.data;
         }
