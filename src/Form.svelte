@@ -19,8 +19,6 @@
             })
             .catch(err => {
                 alert(JSON.stringify(err.message, null, 2));
-                console.log(err.inner);
-                console.log(err.inner.map(el => console.log(el.path)));
                 err.inner.map(el => (errors = [el.path, ...errors]));
             });
     };
@@ -32,8 +30,8 @@
         <div class="mb-6">
             <label class="block text-sm font-bold mb-2" for="confirmed"> Confirmed </label>
             <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
-                    focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+                    leading-tight focus:outline-none focus:shadow-outline"
                 class:border-red-500={errors.includes('name')}
                 id="name"
                 type="text"
@@ -59,8 +57,8 @@
         </div>
         <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="password" /> Password <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
-                    focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+                    leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 type="password"
                 placeholder=""

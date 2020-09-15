@@ -46,7 +46,6 @@
             }/status/confirmed?from=2020-09-01T00:00:00Z&to=2020-${currentMonth()}-${currentDay()}T00:00:00Z`
         );
         if (response && response.data) {
-            // console.log(response.data)
             contriesInfo.setCountry(countryInfo.Slug, response.data);
             return response.data;
         }

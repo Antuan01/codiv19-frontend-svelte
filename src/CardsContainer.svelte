@@ -9,8 +9,6 @@
     const retryGetCountries = () => (countriesReceived = getCountries());
     async function getCountries() {
         const response = await axios.get(`countries`);
-        // .then(res => countries.set(res.data))
-        // .catch(console.log);
         if (response && response.data) {
             countries.set(response.data);
             return response.data;
