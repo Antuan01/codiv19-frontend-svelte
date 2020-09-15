@@ -1,16 +1,17 @@
 import { compose } from './functions'
+import moment from 'moment';
 //utils 
-const toDateObj = (dateable) => new Date(dateable)
-const getMonth = (dateObject) => dateObject.getUTCMonth() + 1
-const getYear = (dateObject) => dateObject.getUTCFullYear()
-const getDate = (dateObject) => dateObject.getUTCDate()
+const toMoment = (dateable) => moment.utc(moment.utc(dateable).format("YYYY-MM-DD"))
+const getMonth = (momentObj) => momentObj.month() + 1
+const getYear = (momentObj) => momentObj.year()
+const getDate = (momentObj) => momentObj.date()
 
 const nowMonth = () => getMonth(now())
 
 const addCeroToDate = (num) => num < 10 ? `0${num}` : num
 
 //exports
-export const now = () => toDateObj(Date.now())
+export const now = () => moment(moment().format("YYYY-MM-DD"))
 
 export const currentMonth = compose(
     nowMonth,
@@ -29,17 +30,17 @@ export const currentYear = compose(
 )
 
 export const day = compose(
-    toDateObj,
+    toMoment,
     getDate
 )
 
 export const month = compose(
-    toDateObj,
+    toMoment,
     getMonth
 )
 
 export const year = compose(
-    toDateObj,
+    toMoment,
     getYear
 )
 

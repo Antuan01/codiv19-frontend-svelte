@@ -1,8 +1,8 @@
 <script>
-	import Home from "./Home.svelte";
-	import Modal from "./Modal.svelte";
+    import Home from "./Home.svelte";
+    import Modal from "./Modal.svelte";
 </script>
 
 <Modal>
-	<Home />
+    <Home />
 </Modal>

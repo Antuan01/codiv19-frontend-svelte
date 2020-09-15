@@ -1,16 +1,23 @@
+*{
+ padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+html{
+	font-size: 16px;
+}
+
 html, body {
 	position: relative;
-	width: 100%;
-	height: 100%;
 }
 
 body {
-	color: #333;
 	margin: 0;
-	padding: 8px;
-	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	background: #1D2029
+	background: #1D2029;
+	color:#FFF;
 }
 body::before{
 	content:"";
@@ -19,7 +26,7 @@ body::before{
 	position: absolute;
 	background:#20222F;
 	width: 100%;
-	height: 20%;
+	height: 30%;
 	top:0;
 	left: 0;
 	z-index: -1;
@@ -72,4 +79,7 @@ button:not(:disabled):active {
 
 button:focus {
 	border-color: #666;
+}
+.modal-opened{
+	overflow:hidden;
 }

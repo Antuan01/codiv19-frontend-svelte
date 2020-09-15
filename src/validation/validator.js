@@ -1,16 +1,24 @@
 import { compose } from "../utils/functions";
 
-const email = () => (value) =>  (value && !!value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) || 'Please enter a valid email'
+const checkField =  (splitStr) => compose(splitStr);
 
-const required = () => (value) => (value !== undefined && value !== null && value !== '') || 'This field is required'
+const splitStr =  (str) => str.split('|');
 
-const string = () => (value) => (value && !!value.match(/^[a-zA-Z]*$/)) || 'Only letters'
+const emailV = (value) => !(!required(value) && value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/));
 
-const numeric = () => (value) => (value && !!value.match(/^[0-9]*$/)) || 'Only numbers'
+const required = (value) => !(value !== undefined && value !== null && value !== '');
+
+const stringV = (value) => (required(value) && !!value.match(/^[a-zA-Z]*$/));
+
+// const numericV = (value) => (required(value) && !!value.match(/^[0-9]*$/));
+
+const numericV = (value) => (!(typeof value == 'number'));
 
 export {
-    email,
+    checkField,
+    splitStr,
+    emailV,
     required,
-    string,
-    numeric
+    stringV,
+    numericV
 }
