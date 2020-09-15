@@ -97,7 +97,6 @@
 
     //open-close
     const open = (NewComponent, newProps = {}, options = {}, callback = {}) => {
-        console.log(newProps);
         Component = NewComponent;
         props = {...newProps, opened: true};
         state = {...defaultState, ...options};

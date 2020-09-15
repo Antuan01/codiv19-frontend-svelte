@@ -15,17 +15,16 @@
     const {open} = getContext("simple-modal");
 
     const showForm = () => {
-
         open(Form3, {
-            countryName: $contriesInfo[countryInfo.Slug].Country || "N/A",
+            countryName: $contriesInfo[countryInfo.Slug].Country || countryInfo.Slug,
             city: $contriesInfo[countryInfo.Slug].City || "N/A",
             code: $contriesInfo[countryInfo.Slug].CountryCode || "N/A",
             province: $contriesInfo[countryInfo.Slug].province || "N/A",
             lat: $contriesInfo[countryInfo.Slug].Lat || "0",
-            lon:$contriesInfo[countryInfo.Slug].Lon || "0",
+            lon: $contriesInfo[countryInfo.Slug].Lon || "0",
             cases: $contriesInfo[countryInfo.Slug].Cases || "0",
             status: $contriesInfo[countryInfo.Slug].Status || "confirmed",
-            contentClass: "md:max-w-630 w-full"
+            contentClass: "md:max-w-630 w-full",
         });
     };
 
