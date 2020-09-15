@@ -22,7 +22,6 @@ const checkFields = () => {
       console.log(err.inner.map(el => console.log(el.path)))
       err.inner.map(el => errors = [el.path,...errors])
     });
-
   }
 
 </script>

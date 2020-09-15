@@ -6,13 +6,14 @@
   import {contriesInfo} from './store/stores';
   import { getContext } from 'svelte';
   import Form from './Form.svelte'
+  import Form3 from './Form3.svelte'
 
   export let countryInfo;
 
   const { open } = getContext('simple-modal');
 
   const showForm = () => {
-        open(Form);
+        open(Form3);
     };
   
   function getData() {
