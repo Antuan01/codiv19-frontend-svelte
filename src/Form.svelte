@@ -9,32 +9,7 @@
         number: "",
     };
 
-<<<<<<< HEAD
-let values = {
-  name: '',
-  email: '',
-  password: '',
-  number: '',
-};
-
-let errors = [];
-
-const checkFields = () => {
-      errors = []
-    FormSchema.validate(values, { abortEarly: false })
-    .then(() => {
-      alert(JSON.stringify(values, null, 2));
-    })
-    .catch((err) => {
-      alert(JSON.stringify(err.message, null, 2));
-      console.log(err.inner)
-      console.log(err.inner.map(el => console.log(el.path)))
-      err.inner.map(el => errors = [el.path,...errors])
-    });
-  }
-=======
     let errors = [];
->>>>>>> 2a4f75c39dc8bb9758cf46f1ed84f0c5aaddbf53
 
     const checkFields = () => {
         errors = [];
