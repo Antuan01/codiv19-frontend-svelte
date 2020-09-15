@@ -1,56 +1,109 @@
 <script>
     export let countryName;
+    export let lat;
+    export let lon;
+    export let cases;
+    export let status;
+    export let city;
+    export let code;
+    export let province;
+
     import { emailV, required, stringV, numericV } from "./validation/validator";
 
     let values = {
-    name: {
+    country: {
         error: false,
-        value: "",
+        value: countryName,
         touched: false,
     },
-    email: {
+    city: {
         error: false,
-        value: "",
+        value: city,
         touched: false,
     },
-    password: {
+    province: {
         error: false,
-        value: "",
+        value: province,
         touched: false,
     },
-    number: {
+    code: {
         error: false,
-        value: "",
+        value: code,
+        touched: false,
+    },
+    lat: {
+        error: false,
+        value: lat,
+        touched: false,
+    },
+    lon: {
+        error: false,
+        value: lon,
+        touched: false,
+    },
+    cases: {
+        error: false,
+        value: cases,
+        touched: false,
+    },
+    status: {
+        error: false,
+        value: status,
         touched: false,
     },
     };
 
-    let available = false
+    let available = true
 
     const availableCheck = () => {
-        available = Object.values(values).map(el => el.error).indexOf(true) === -1 && Object.values(values).map(el => el.touched).indexOf(false) === -1
+        available = Object.values(values).map(el => el.error).indexOf(true) === -1
     }
 
-    const validateEmail = () => {
-        values.email.error = emailV(values.email.value)
-        values.email.touched = true
-        availableCheck()
-
-    }
-
-    const validateName = () => {
-        values.name.error = stringV(values.name.value)
-        values.name.touched = true
+    const validateCountry = () => {
+        values.country.error = stringV(values.country.value)
+        // values.country.touched = true
         availableCheck()
     }
 
-    const validatePassword = () => {values.password.error = required(values.password.value)
-        values.password.touched = true
+    const validateCity = () => {
+        values.city.error = stringV(values.city.value)
+        // values.city.touched = true
         availableCheck()
     }
 
-    const validateNumber = () => {values.number.error = numericV(values.number.value)
-        values.number.touched = true
+    const validateCode = () => {
+        values.code.error = stringV(values.code.value)
+        // values.name.touched = true
+        availableCheck()
+    }
+
+    const validateLat = () => {
+        values.lat.error = numericV(values.lat.value)
+        // values.name.touched = true
+        availableCheck()
+    }
+
+    const validateLon = () => {
+        values.lon.error = numericV(values.lon.value)
+        // values.name.touched = true
+        availableCheck()
+    }
+
+    const validateProvince = () => {
+        values.province.error = stringV(values.province.value)
+        // values.province.touched = true
+        availableCheck()
+    }
+
+    const validateCases = () => {
+        values.cases.error = numericV(values.cases.value)
+        // values.cases.touched = true
+        availableCheck()
+    }
+
+    const validateStatus = () => {
+        values.status.error = stringV(values.status.value)
+        // values.status.touched = true
         availableCheck()
     }
 
@@ -65,88 +118,176 @@
     <form class="px-8 pt-6 pb-8 mb-4">
 
         <div class="mb-6">
-            <label class="block text-sm font-bold mb-2" for="name">
-                Name
+            <label class="block text-sm font-bold mb-2" for="country">
+                Country
             </label>
             <input 
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            class:border-red-500={values.name.error}
-            id="name" 
+            class:border-red-500={values.country.error}
+            id="country" 
             type="text" 
             placeholder=""
-            bind:value={values.name.value}
-            on:blur={validateName}
-            on:input={validateName}
+            bind:value={values.country.value}
+            on:blur={validateCountry}
+            on:input={validateCountry}
             >
-            {#if values.name.error}
+            {#if values.country.error}
                 <p class="text-red-500">
-                    The name is required
+                    The Country is required
                 </p>
             {/if}
             </div>
 
     <div class="mb-6">
-        <label class="block text-sm font-bold mb-2" for="email">
-        Email
+        <label class="block text-sm font-bold mb-2" for="city">
+        City
         </label>
         <input
         class="shadow appearance-none border rounded w-full py-2 px-3
             text-gray-700 mb-3 leading-tight focus:outline-none
             focus:shadow-outline"
-        id="email"
-        type="email"
+        id="city"
+        type="text"
         placeholder=""
-        bind:value={values.email.value}
-        class:border-red-500={values.email.error} 
-        on:blur={validateEmail}
-        on:input={validateEmail}
+        bind:value={values.city.value}
+        class:border-red-500={values.city.error} 
+        on:blur={validateCity}
+        on:input={validateCity}
         />
-        {#if values.email.error}
-        <p class="text-red-500">Please enter a valid email</p>
+        {#if values.city.error}
+        <p class="text-red-500">The city is required </p>
         {/if}
     </div>
 
     <div class="mb-6">
-        <label class="block text-sm font-bold mb-2" for="password">
-            Password
+        <label class="block text-sm font-bold mb-2" for="code">
+            Code
         </label>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-        id="password" 
-        type="password" 
+        id="code" 
+        type="text" 
         placeholder=""
-        bind:value={values.password.value}
-        class:border-red-500={values.password.error}
-        on:blur={validatePassword}
-        on:input={validatePassword}
+        bind:value={values.code.value}
+        class:border-red-500={values.code.error}
+        on:blur={validateCode}
+        on:input={validateCode}
         >
-        {#if values.password.error}
+        {#if values.code.error}
         <p class="text-red-500">
-            The password field is required
+            The code is required
         </p>
         {/if}
         </div>
 
         <div class="mb-6">
-        <label class="block text-sm font-bold mb-2" for="number">
-            Number
+        <label class="block text-sm font-bold mb-2" for="province">
+            Province
         </label>
         <input 
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
         id="number" 
-        type="number" 
+        type="text" 
         min=0
         placeholder=""
-        bind:value={values.number.value}
-        class:border-red-500={values.number.error}
-        on:blur={validateNumber}
-        on:input={validateNumber}
+        bind:value={values.province.value}
+        class:border-red-500={values.province.error}
+        on:blur={validateProvince}
+        on:input={validateProvince}
         >
-        {#if values.number.error}
+        {#if values.province.error}
         <p class="text-red-500">
-            The number field is requiered
+            The province field is requiered
         </p>
         {/if}
         </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-bold mb-2" for="lat">
+                Latitude
+            </label>
+            <input 
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+            id="number" 
+            type="number" 
+            min=0
+            placeholder=""
+            bind:value={values.lat.value}
+            class:border-red-500={values.lat.error}
+            on:blur={validateLat}
+            on:input={validateLat}
+            >
+            {#if values.lat.error}
+            <p class="text-red-500">
+                The latitude field is requiered
+            </p>
+            {/if}
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-bold mb-2" for="lon">
+                    Longitude
+                </label>
+                <input 
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                id="number" 
+                type="number" 
+                min=0
+                placeholder=""
+                bind:value={values.lon.value}
+                class:border-red-500={values.lon.error}
+                on:blur={validateLon}
+                on:input={validateLon}
+                >
+                {#if values.lon.error}
+                <p class="text-red-500">
+                    The longitude field is requiered
+                </p>
+                {/if}
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-bold mb-2" for="cases">
+                        Cases
+                    </label>
+                    <input 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                    id="number" 
+                    type="number" 
+                    min=0
+                    placeholder=""
+                    bind:value={values.cases.value}
+                    class:border-red-500={values.cases.error}
+                    on:blur={validateCases}
+                    on:input={validateCases}
+                    >
+                    {#if values.cases.error}
+                    <p class="text-red-500">
+                        The Cases field is requiered
+                    </p>
+                    {/if}
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2" for="status">
+                            Status
+                        </label>
+                        <input 
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        id="number" 
+                        type="text" 
+                        min=0
+                        placeholder=""
+                        bind:value={values.status.value}
+                        class:border-red-500={values.status.error}
+                        on:blur={validateStatus}
+                        on:input={validateStatus}
+                        >
+                        {#if values.status.error}
+                        <p class="text-red-500">
+                            The status field is requiered
+                        </p>
+                        {/if}
+                    </div>
 
     <div class="flex items-center justify-between">
         <button

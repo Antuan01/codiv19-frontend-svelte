@@ -15,8 +15,18 @@
     const {open} = getContext("simple-modal");
 
     const showForm = () => {
-        console.log(countryInfo);
-        open(Form3, {countryName: countryInfo.Country, contentClass: "md:max-w-630 w-full"});
+        // console.log(countryInfo);
+        open(Form3, {
+            countryName: countryInfo.Country || "",
+            city: countryInfo.City || "",
+            code: countryInfo.CountryCode || "",
+            province: countryInfo.province || "",
+            lat: countryInfo.Lat || "",
+            lon:countryInfo.Lon || "",
+            cases: countryInfo.Cases || "",
+            status: countryInfo.Status || "",
+            contentClass: "md:max-w-630 w-full"
+        });
     };
 
     const handleRetry = () => (getCountryInfo = getData());
@@ -35,6 +45,7 @@
             }/status/confirmed?from=2020-09-01T00:00:00Z&to=2020-${currentMonth()}-${currentDay()}T00:00:00Z`
         );
         if (response && response.data) {
+            console.log(response.data)
             contriesInfo.setCountry(countryInfo.Slug, response.data);
             return response.data;
         }
