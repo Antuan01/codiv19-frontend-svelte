@@ -80,6 +80,7 @@
     const validateLat = () => {
         values.lat.error = numericV(values.lat.value)
         // values.name.touched = true
+        console.log(values.lat.error)
         availableCheck()
     }
 

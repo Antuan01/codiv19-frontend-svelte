@@ -23,7 +23,7 @@ function createCountryInfo() {
                 ...info,
                 [countrySlug]: {
                     ...countryInfoWithTotalCases(countryData),
-                    ...countryData[0]
+                    // ...countryData[0]
                 }
             }
         }),

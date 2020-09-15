@@ -10,7 +10,9 @@ const required = (value) => !(value !== undefined && value !== null && value !==
 
 const stringV = (value) => (required(value) && !!value.match(/^[a-zA-Z]*$/));
 
-const numericV = (value) => (required(value) && !!value.match(/^[0-9]*$/));
+// const numericV = (value) => (required(value) && !!value.match(/^[0-9]*$/));
+
+const numericV = (value) => (!(typeof value == 'number'));
 
 export {
     checkField,
