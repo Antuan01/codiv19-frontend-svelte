@@ -4,7 +4,7 @@ const FormSchema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().required().email(),
     password: yup.string().required(),
-    number: yup.number().required(),
+    number: yup.number().required().moreThan(0),
 });
 
 export { FormSchema }

@@ -9,7 +9,7 @@ export const countriesSelectedRandomly = derived(
     countries,
     $countries => {
         const rand = getRandomInt($countries.length - 5)
-        return $countries.slice(rand, rand + 4)
+        return $countries.slice(rand, rand + 8)
     }
 );
 //handle single countries
@@ -22,11 +22,14 @@ function createCountryInfo() {
             return {
                 ...info,
                 [countrySlug]: {
-                    ...countryInfoWithTotalCases(countryData)
+                    ...countryInfoWithTotalCases(countryData),
+                    // ...countryData[0]
                 }
             }
         }),
     };
 }
+
+
 
 export const contriesInfo = createCountryInfo();

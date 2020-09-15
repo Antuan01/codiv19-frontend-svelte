@@ -2,9 +2,9 @@
     import axios from "axios";
     import {onMount, beforeUpdate} from "svelte";
     import {currentMonth, currentDay} from "./utils/date";
-    import {contriesInfo} from "./store/stores";
+    import {contriesInfo, countries} from "./store/stores";
     import {getContext} from "svelte";
-    import Form from "./Form.svelte";
+    import Form3 from "./Form3.svelte";
     import Loader from "./Loader.svelte";
     import Button from "./Button.svelte";
     export let countryInfo;
@@ -15,18 +15,30 @@
     const {open} = getContext("simple-modal");
 
     const showForm = () => {
-        console.log(countryInfo);
-        open(Form, {countryName: countryInfo.Country, contentClass: "md:max-w-630 w-full"});
+
+        open(Form3, {
+            countryName: $contriesInfo[countryInfo.Slug].Country || "N/A",
+            city: $contriesInfo[countryInfo.Slug].City || "N/A",
+            code: $contriesInfo[countryInfo.Slug].CountryCode || "N/A",
+            province: $contriesInfo[countryInfo.Slug].province || "N/A",
+            lat: $contriesInfo[countryInfo.Slug].Lat || "0",
+            lon:$contriesInfo[countryInfo.Slug].Lon || "0",
+            cases: $contriesInfo[countryInfo.Slug].Cases || "0",
+            status: $contriesInfo[countryInfo.Slug].Status || "confirmed",
+            contentClass: "md:max-w-630 w-full"
+        });
     };
 
     const handleRetry = () => (getCountryInfo = getData());
 
     const setTopBarColor = index => `color-line-${index}`;
+
     const shouldStopLoading = () => {
         if (isLoading && $contriesInfo && $contriesInfo[countryInfo.Slug]) {
             isLoading = false;
         }
     };
+
     async function getData() {
         if (!isLoading) isLoading = true;
         const response = await axios.get(
@@ -35,6 +47,7 @@
             }/status/confirmed?from=2020-09-01T00:00:00Z&to=2020-${currentMonth()}-${currentDay()}T00:00:00Z`
         );
         if (response && response.data) {
+            // console.log(response.data)
             contriesInfo.setCountry(countryInfo.Slug, response.data);
             return response.data;
         }
