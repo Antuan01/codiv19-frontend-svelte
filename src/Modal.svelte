@@ -113,6 +113,9 @@
         Component = null;
         props = null;
     };
+    const checkSelection = () => {
+        return window.getSelection() && window.getSelection().isCollapsed;
+    };
     //key handlers
     const handleKeydown = event => {
         if (state.closeOnEsc && Component && event.key === "Escape") {
@@ -137,7 +140,11 @@
     };
 
     const handleOuterClick = event => {
-        if (state.closeOnOuterClick && (event.target === background || event.target === wrap)) {
+        if (
+            state.closeOnOuterClick &&
+            checkSelection() &&
+            (event.target === background || event.target === wrap)
+        ) {
             event.preventDefault();
             close();
         }
