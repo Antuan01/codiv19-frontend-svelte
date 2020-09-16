@@ -20,9 +20,9 @@
             city: $contriesInfo[countryInfo.Slug].City || "N/A",
             code: $contriesInfo[countryInfo.Slug].CountryCode || "N/A",
             province: $contriesInfo[countryInfo.Slug].province || "N/A",
-            lat: $contriesInfo[countryInfo.Slug].Lat || "0",
-            lon: $contriesInfo[countryInfo.Slug].Lon || "0",
-            cases: $contriesInfo[countryInfo.Slug].Cases || "0",
+            lat: parseFloat($contriesInfo[countryInfo.Slug].Lat) || 0,
+            lon: parseFloat($contriesInfo[countryInfo.Slug].Lon) || 0,
+            cases: parseInt($contriesInfo[countryInfo.Slug].Cases) || 0,
             status: $contriesInfo[countryInfo.Slug].Status || "confirmed",
             contentClass: "md:max-w-630 w-full",
         });

@@ -7,8 +7,10 @@
     export let city;
     export let code;
     export let province;
-
+    import { getContext } from 'svelte';
     import {emailV, required, stringV, numericV} from "./validation/validator";
+
+    const { close } = getContext('simple-modal');
 
     let values = {
         country: {
@@ -112,7 +114,7 @@
         availableCheck();
     };
 
-    const submit = () =>
+    const submit = () => {
         console.log(
             Object.keys(values).reduce((acc, key) => {
                 acc = {
@@ -122,6 +124,8 @@
                 return acc;
             }, {})
         );
+        close();
+    }
 </script>
 
 <div class="w-full">
@@ -268,7 +272,7 @@
             {/if}
         </div>
 
-        <div class="flex items-center justify-between">
+        <div class="flex justify-center">
             <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
                     focus:outline-none focus:shadow-outline"

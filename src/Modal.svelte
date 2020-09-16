@@ -137,7 +137,8 @@
     };
 
     const handleOuterClick = event => {
-        if (state.closeOnOuterClick && (event.target === background || event.target === wrap)) {
+        if (state.closeOnOuterClick &&
+            (event.target === background || event.target === wrap)) {
             event.preventDefault();
             close();
         }
