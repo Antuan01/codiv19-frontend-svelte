@@ -77,7 +77,7 @@
 </style>
 
 <div
-    class={`${isLoading ? 'flex justify-center items-center' : ''} min-h-180 lg:max-w-400 rounded overflow-hidden shadow-lg background-color-card cursor-pointer  hover:bg-blue-600`}
+    class={`${isLoading ? 'flex justify-center items-center' : ''} min-h-180 lg:max-w-400 rounded overflow-hidden shadow-lg background-color-card cursor-pointer  sm:hover:bg-blue-600`}
     on:click={!isLoading && showForm}>
     <div class={`${setTopBarColor(colorIndex)} h-1`} />
     {#await getCountryInfo}
