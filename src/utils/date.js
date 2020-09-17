@@ -10,8 +10,29 @@ const nowMonth = () => getMonth(now())
 
 const addCeroToDate = (num) => num < 10 ? `0${num}` : num
 
+const now = () => moment(moment().format("YYYY-MM-DD"))
+
+const currentYear = compose(
+    now,
+    getYear
+)
+
+const day = compose(
+    toMoment,
+    getDate
+)
+
+const month = compose(
+    toMoment,
+    getMonth
+)
+
+const year = compose(
+    toMoment,
+    getYear
+)
+
 //exports
-export const now = () => moment(moment().format("YYYY-MM-DD"))
 
 export const currentMonth = compose(
     nowMonth,
@@ -24,25 +45,6 @@ export const currentDay = compose(
     addCeroToDate
 )
 
-export const currentYear = compose(
-    now,
-    getYear
-)
-
-export const day = compose(
-    toMoment,
-    getDate
-)
-
-export const month = compose(
-    toMoment,
-    getMonth
-)
-
-export const year = compose(
-    toMoment,
-    getYear
-)
 
 export const isYesterdayDate = (date) => (
     currentYear() === year(date) &&
