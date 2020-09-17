@@ -8,7 +8,7 @@
     export let code;
     export let province;
     import {getContext} from "svelte";
-    import {emailV, required, stringV, numericV} from "../validation/validator";
+    import {required, stringV, numericV} from "../validation/validator";
 
     const {close} = getContext("simple-modal");
 
@@ -87,6 +87,7 @@
     const validateLat = () => {
         values.lat.error = numericV(values.lat.value);
         // values.name.touched = true
+        console.log(values.lat.error)
         availableCheck();
     };
 
