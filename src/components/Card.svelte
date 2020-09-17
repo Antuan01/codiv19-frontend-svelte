@@ -1,8 +1,8 @@
 <script>
     import axios from "axios";
     import {onMount, beforeUpdate} from "svelte";
-    import {currentMonth, currentDay} from "./utils/date";
-    import {contriesInfo, countries} from "./store/stores";
+    import {currentMonth, currentDay} from "../utils/date";
+    import {contriesInfo, countries} from "../store/stores";
     import {getContext} from "svelte";
     import Form from "./Form.svelte";
     import Loader from "./Loader.svelte";

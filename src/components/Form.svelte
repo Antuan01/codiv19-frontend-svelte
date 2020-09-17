@@ -7,10 +7,10 @@
     export let city;
     export let code;
     export let province;
-    import { getContext } from 'svelte';
-    import {emailV, required, stringV, numericV} from "./validation/validator";
+    import {getContext} from "svelte";
+    import {emailV, required, stringV, numericV} from "../validation/validator";
 
-    const { close } = getContext('simple-modal');
+    const {close} = getContext("simple-modal");
 
     let values = {
         country: {
@@ -125,7 +125,7 @@
             }, {})
         );
         close();
-    }
+    };
 </script>
 
 <div class="w-full">

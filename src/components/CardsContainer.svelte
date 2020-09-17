@@ -1,5 +1,5 @@
 <script>
-    import {countries, countriesSelectedRandomly} from "./store/stores";
+    import {countries, countriesSelectedRandomly} from "../store/stores";
     import axios from "axios";
     import Card from "./Card.svelte";
     import Button from "./Button.svelte";
