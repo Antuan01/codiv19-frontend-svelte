@@ -1,6 +1,6 @@
 <script>
-    import Home from "./Home.svelte";
-    import Modal from "./Modal.svelte";
+    import Home from "./components/Home.svelte";
+    import Modal from "./components/Modal.svelte";
 </script>
 
 <Modal>
